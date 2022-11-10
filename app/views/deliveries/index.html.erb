@@ -57,13 +57,13 @@
         <div><%= package.description %></div>
 
         <div style="color: red;">
-          Supposed to arrive on <%= package.arrival_date.strftime("%F")%>
+          Supposed to arrive on <%= package.arrival_date%>
         </div>
 
         <div><%= package.details %></div>
 
         <div>
-          <form action="/modify_delivery/<%= package.id %>">
+          <form action="/modify_delivery/<%= package.id %>" method="post">
             <input type="hidden" name="arrived" value="true">
 
             <button>Mark as received</button>

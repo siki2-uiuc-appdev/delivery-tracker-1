@@ -12,6 +12,7 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all' %>
+    <link rel="stylesheet" href="/css/styles.css">
 
   </head>
 
@@ -23,6 +24,18 @@
       |
       <a href="/user_sign_out">Sign out</a>
     </nav>
+
+    <% if notice.present? %>
+      <div style= "color: green;">
+        <%= notice %>
+      </div>
+    <% end %>
+
+    <% if alert.present? %>
+      <div style="color: red;">
+        <%= alert %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>
