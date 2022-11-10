@@ -14,4 +14,8 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many(:deliveries, { :class_name => "Delivery", :foreign_key => "owner_id", :dependent => :destroy })
+
+  has_many(:waiting_on, -> { where status: "waiting on" }, { :class_name => "Delivery", :foreign_key => "owner_id", :dependent => :destroy })
+  has_many(:delivered,  -> { where status: "delivered" }, { :class_name => "Delivery", :foreign_key => "owner_id", :dependent => :destroy })
+
 end

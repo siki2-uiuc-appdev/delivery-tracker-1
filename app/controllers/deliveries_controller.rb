@@ -7,22 +7,12 @@ class DeliveriesController < ApplicationController
     render({ :template => "deliveries/index.html.erb" })
   end
 
-  def show
-    the_id = params.fetch("path_id")
-
-    matching_deliveries = Delivery.where({ :id => the_id })
-
-    @the_delivery = matching_deliveries.at(0)
-
-    render({ :template => "deliveries/show.html.erb" })
-  end
-
   def create
     the_delivery = Delivery.new
     the_delivery.description = params.fetch("query_description")
     the_delivery.arrival_date = params.fetch("query_arrival_date")
     the_delivery.details = params.fetch("query_details")
-    the_delivery.owner_id = params.fetch("query_owner_id")
+    the_delivery.owner_id = @current_user.id
 
     if the_delivery.valid?
       the_delivery.save
