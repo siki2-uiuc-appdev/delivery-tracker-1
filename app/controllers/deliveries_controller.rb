@@ -1,4 +1,7 @@
 class DeliveriesController < ApplicationController
+  require "date"
+
+  @today = Date.today
   def index
     matching_deliveries = Delivery.all
 

@@ -5,3 +5,7 @@
 .received {
   background-color: lightgreen;
 }
+
+.overdue {
+  color: red;
+}
