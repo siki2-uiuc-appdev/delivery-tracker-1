@@ -51,12 +51,45 @@
 
 <div class="waiting_on">
   <h2>Waiting on</h2>
-  <ul></ul>
+  <ul>
+    <% @current_user.waiting_on.each do |package| %>
+      <li>
+        <div><%= package.description %></div>
+
+        <div style="color: red;">
+          Supposed to arrive on <%= package.arrival_date.strftime("%F")%>
+        </div>
+
+        <div><%= package.details %></div>
+
+        <div>
+          <form action="/modify_delivery/<%= package.id %>">
+            <input type="hidden" name="arrived" value="true">
+
+            <button>Mark as received</button>
+          </form>
+        </div>
+
+        <br>
+      </li>
+    <% end %>
+  </ul>
 </div>
 
 <hr>
 
 <div class="received">
   <h2>Received</h2>
-  <ul></ul>
+  <ul>
+    <% @current_user.delivered.each do |package| %>
+      <li>
+        <div><%= package.description %></div>
+        <div>
+          <small>Updated <%= time_ago_in_words(package.updated_at) %> ago</small>
+          <a href="/delete_delivery/<%= package.id %>">Delete</a>
+        </div>
+        <br>
+      </li>
+    <% end %>
+  </ul>
 </div>
