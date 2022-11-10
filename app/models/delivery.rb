@@ -6,6 +6,7 @@
 #  arrival_date :datetime
 #  description  :string
 #  details      :text
+#  status       :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  owner_id     :integer
