@@ -56,8 +56,8 @@
       <li>
         <div><%= package.description %></div>
 
-        <%# <div class=<%= (Date.today - package.arrival_date).to_i > 3 ? "overdue" : "" %>
-        <div class="overdue">
+        <div class=<%= (Date.today - package.arrival_date).to_i > 3 ? "overdue" : "" %> >
+        <%# # <div class="overdue"> %>
           Supposed to arrive on <%= package.arrival_date%>
         </div>
 
